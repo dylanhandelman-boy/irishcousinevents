@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Read reviews from our clients — Irish Cousin Events provides professional event staffing, bartending, and more in the Hudson Valley, NY.">
+  <meta name="keywords" content="event staffing reviews, bartender reviews, Hudson Valley events, Irish Cousin Events testimonials">
+  <title>Client Reviews | Irish Cousin Events</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;0,700;1,400;1,600&family=Playfair+Display:ital,wght@0,400;0,700;1,400;1,700&family=Lato:wght@300;400;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/styles.css">
+
+  <!-- Firebase SDK -->
+  <script src="https://www.gstatic.com/firebasejs/10.14.1/firebase-app-compat.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/10.14.1/firebase-database-compat.js"></script>
+  <script>
+    firebase.initializeApp({
+      apiKey: "AIzaSyC-4SPMNJYiCCzVqGQRSXRLKhrvJ3_ZsUQ",
+      authDomain: "irish-cousin-reviews.firebaseapp.com",
+      databaseURL: "https://irish-cousin-reviews-default-rtdb.firebaseio.com",
+      projectId: "irish-cousin-reviews",
+      storageBucket: "irish-cousin-reviews.firebasestorage.app",
+      messagingSenderId: "453917570902",
+      appId: "1:453917570902:web:79904c2d30ebbfdbf908f7",
+      measurementId: "G-FCJVXK9PQE"
+    });
+    var reviewsDB = firebase.database().ref('reviews');
+  </script>
+</head>
+<body>
+
+  <!-- ===== NAVIGATION ===== -->
+  <header class="nav-header" id="nav-header">
+    <nav class="nav-container" role="navigation" aria-label="Main navigation">
+      <a href="index.html" class="nav-logo" aria-label="Irish Cousin Events — home">
+        <svg class="nav-logo-icon" viewBox="0 0 80 80" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false">
+          <g fill="none" stroke="#C9A84C" stroke-width="3">
+            <path d="M40 10 A34 34 0 0 1 40 70 A34 34 0 0 1 40 10"/>
+            <path d="M40 10 A34 34 0 0 1 40 70 A34 34 0 0 1 40 10" transform="rotate(120,40,40)"/>
+            <path d="M40 10 A34 34 0 0 1 40 70 A34 34 0 0 1 40 10" transform="rotate(240,40,40)"/>
+            <circle cx="40" cy="40" r="34" stroke-width="2"/>
+          </g>
+        </svg>
+        <span class="nav-logo-text">Irish Cousin Events</span>
+      </a>
+
+      <button class="nav-toggle" id="nav-toggle" aria-label="Open navigation menu" aria-expanded="false" aria-controls="nav-links">
+        <span class="nav-toggle-bar" aria-hidden="true"></span>
+        <span class="nav-toggle-bar" aria-hidden="true"></span>
+        <span class="nav-toggle-bar" aria-hidden="true"></span>
+      </button>
+
+      <ul class="nav-links" id="nav-links" role="list">
+        <li><a href="index.html#services" class="nav-link">Services</a></li>
+        <li><a href="index.html#about" class="nav-link">About</a></li>
+        <li><a href="index.html#gallery" class="nav-link">Gallery</a></li>
+        <li><a href="index.html#testimonials" class="nav-link">Testimonials</a></li>
+        <li><a href="index.html#contact" class="nav-link nav-link--cta">Book Now</a></li>
+      </ul>
+    </nav>
+  </header>
+
+
+  <!-- ===== PAGE HERO ===== -->
+  <section class="reviews-page-hero" aria-labelledby="reviews-heading">
+    <div class="container">
+      <header class="section-header">
+        <span class="eyebrow">Client Reviews</span>
+        <h1 class="section-title" id="reviews-heading">What Our Clients Say</h1>
+        <p class="section-sub">We are grateful for every client who trusts us with their special occasions.</p>
+      </header>
+      <div class="reviews-summary" id="reviews-summary" hidden>
+        <span class="reviews-summary-number" id="avg-rating">--</span>
+        <div class="reviews-summary-details">
+          <div class="testimonial-stars" id="avg-stars" role="img" aria-label="Average rating"></div>
+          <span class="reviews-summary-count" id="review-count">-- reviews</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+
+  <!-- ===== ALL REVIEWS ===== -->
+  <section class="all-reviews-section">
+    <div class="container">
+      <div class="all-reviews-grid" id="all-reviews-list">
+        <p class="reviews-loading">Loading reviews...</p>
+      </div>
+    </div>
+  </section>
+
+
+  <!-- ===== LEAVE A REVIEW ===== -->
+  <section class="testimonials" id="leave-review">
+    <div class="container">
+      <div class="review-form-wrapper reveal">
+        <h3 class="review-form-title">Share Your Experience</h3>
+        <form id="review-form" class="review-form" novalidate>
+          <div class="review-row">
+            <div class="review-field">
+              <label for="review-name" class="review-label">Your Name</label>
+              <input type="text" id="review-name" class="review-input" required placeholder="Jane D.">
+            </div>
+            <div class="review-field">
+              <label class="review-label">Rating</label>
+              <div class="star-rating" id="star-rating" role="radiogroup" aria-label="Rating">
+                <button type="button" class="star-btn" data-value="1" aria-label="1 star"><svg viewBox="0 0 16 16" aria-hidden="true"><path d="M8 1l1.91 3.88 4.28.62-3.1 3.02.73 4.27L8 10.77l-3.82 2.02.73-4.27L1.81 5.5l4.28-.62L8 1z"/></svg></button>
+                <button type="button" class="star-btn" data-value="2" aria-label="2 stars"><svg viewBox="0 0 16 16" aria-hidden="true"><path d="M8 1l1.91 3.88 4.28.62-3.1 3.02.73 4.27L8 10.77l-3.82 2.02.73-4.27L1.81 5.5l4.28-.62L8 1z"/></svg></button>
+                <button type="button" class="star-btn" data-value="3" aria-label="3 stars"><svg viewBox="0 0 16 16" aria-hidden="true"><path d="M8 1l1.91 3.88 4.28.62-3.1 3.02.73 4.27L8 10.77l-3.82 2.02.73-4.27L1.81 5.5l4.28-.62L8 1z"/></svg></button>
+                <button type="button" class="star-btn" data-value="4" aria-label="4 stars"><svg viewBox="0 0 16 16" aria-hidden="true"><path d="M8 1l1.91 3.88 4.28.62-3.1 3.02.73 4.27L8 10.77l-3.82 2.02.73-4.27L1.81 5.5l4.28-.62L8 1z"/></svg></button>
+                <button type="button" class="star-btn" data-value="5" aria-label="5 stars"><svg viewBox="0 0 16 16" aria-hidden="true"><path d="M8 1l1.91 3.88 4.28.62-3.1 3.02.73 4.27L8 10.77l-3.82 2.02.73-4.27L1.81 5.5l4.28-.62L8 1z"/></svg></button>
+              </div>
+            </div>
+          </div>
+          <div class="review-field">
+            <label for="review-text" class="review-label">Your Review</label>
+            <textarea id="review-text" class="review-input review-textarea" required rows="3" placeholder="Tell us about your experience..."></textarea>
+          </div>
+          <button type="submit" class="btn btn-gold review-submit" id="review-submit-btn">
+            <span class="review-submit-label">Submit Review</span>
+          </button>
+          <p class="review-success" id="review-success" hidden>Thank you for your review!</p>
+          <p class="review-error" id="review-error" hidden>Please fill in all fields and select a rating.</p>
+        </form>
+      </div>
+    </div>
+  </section>
+
+
+  <!-- ===== FOOTER ===== -->
+  <footer class="footer" role="contentinfo">
+    <div class="container footer-inner">
+      <div class="footer-brand">
+        <svg class="footer-knot" viewBox="0 0 80 80" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false">
+          <g fill="none" stroke="#C9A84C" stroke-width="3">
+            <path d="M40 10 A34 34 0 0 1 40 70 A34 34 0 0 1 40 10"/>
+            <path d="M40 10 A34 34 0 0 1 40 70 A34 34 0 0 1 40 10" transform="rotate(120,40,40)"/>
+            <path d="M40 10 A34 34 0 0 1 40 70 A34 34 0 0 1 40 10" transform="rotate(240,40,40)"/>
+            <circle cx="40" cy="40" r="34" stroke-width="2"/>
+          </g>
+        </svg>
+        <p class="footer-tagline">No party too big or too small.</p>
+      </div>
+
+      <nav class="footer-nav" aria-label="Footer navigation">
+        <a href="index.html#services" class="footer-link">Services</a>
+        <a href="index.html#about" class="footer-link">About</a>
+        <a href="index.html#gallery" class="footer-link">Gallery</a>
+        <a href="reviews.html" class="footer-link">Reviews</a>
+        <a href="index.html#contact" class="footer-link">Contact</a>
+      </nav>
+
+      <div class="footer-contact">
+        <a href="tel:+18456644006" class="footer-contact-link">(845) 664-4006</a>
+        <a href="mailto:irishcousinevents@gmail.com" class="footer-contact-link">irishcousinevents@gmail.com</a>
+        <a href="https://www.facebook.com/p/Irish-Cousin-Events-61559779203297/" target="_blank" rel="noopener noreferrer" class="footer-facebook" aria-label="Irish Cousin Events on Facebook">
+          <svg viewBox="0 0 24 24" width="18" height="18" fill="currentColor" aria-hidden="true" focusable="false">
+            <path d="M24 12.073c0-6.627-5.373-12-12-12S0 5.446 0 12.073c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.875v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/>
+          </svg>
+          <span>Facebook</span>
+        </a>
+      </div>
+    </div>
+
+    <div class="footer-bottom">
+      <div class="container">
+        <p>&copy; 2024 Irish Cousin Events &nbsp;&middot;&nbsp; Hudson Valley, NY</p>
+      </div>
+    </div>
+  </footer>
+
+  <script src="js/main.js"></script>
+</body>
+</html>
