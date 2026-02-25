@@ -1,0 +1,519 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Irish Cousin Events — Professional event staffing, bartending, setup & cleanup for private parties and events in the Hudson Valley, NY. No party too big or too small.">
+  <meta name="keywords" content="event staffing, bartenders, servers, party setup, Hudson Valley, NY, private events">
+  <title>Irish Cousin Events | Hudson Valley Event Services</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;0,700;1,400;1,600&family=Playfair+Display:ital,wght@0,400;0,700;1,400;1,700&family=Lato:wght@300;400;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/styles.css">
+
+  <!-- Firebase SDK -->
+  <script src="https://www.gstatic.com/firebasejs/10.14.1/firebase-app-compat.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/10.14.1/firebase-database-compat.js"></script>
+  <script>
+    firebase.initializeApp({
+      apiKey: "AIzaSyC-4SPMNJYiCCzVqGQRSXRLKhrvJ3_ZsUQ",
+      authDomain: "irish-cousin-reviews.firebaseapp.com",
+      databaseURL: "https://irish-cousin-reviews-default-rtdb.firebaseio.com",
+      projectId: "irish-cousin-reviews",
+      storageBucket: "irish-cousin-reviews.firebasestorage.app",
+      messagingSenderId: "453917570902",
+      appId: "1:453917570902:web:79904c2d30ebbfdbf908f7",
+      measurementId: "G-FCJVXK9PQE"
+    });
+    var reviewsDB = firebase.database().ref('reviews');
+  </script>
+</head>
+<body>
+
+  <!-- ===== NAVIGATION ===== -->
+  <header class="nav-header" id="nav-header">
+    <nav class="nav-container" role="navigation" aria-label="Main navigation">
+      <a href="#hero" class="nav-logo" aria-label="Irish Cousin Events — home">
+        <svg class="nav-logo-icon" viewBox="0 0 80 80" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false">
+          <g fill="none" stroke="#C9A84C" stroke-width="3">
+            <path d="M40 10 A34 34 0 0 1 40 70 A34 34 0 0 1 40 10"/>
+            <path d="M40 10 A34 34 0 0 1 40 70 A34 34 0 0 1 40 10" transform="rotate(120,40,40)"/>
+            <path d="M40 10 A34 34 0 0 1 40 70 A34 34 0 0 1 40 10" transform="rotate(240,40,40)"/>
+            <circle cx="40" cy="40" r="34" stroke-width="2"/>
+          </g>
+        </svg>
+        <span class="nav-logo-text">Irish Cousin Events</span>
+      </a>
+
+      <button class="nav-toggle" id="nav-toggle" aria-label="Open navigation menu" aria-expanded="false" aria-controls="nav-links">
+        <span class="nav-toggle-bar" aria-hidden="true"></span>
+        <span class="nav-toggle-bar" aria-hidden="true"></span>
+        <span class="nav-toggle-bar" aria-hidden="true"></span>
+      </button>
+
+      <ul class="nav-links" id="nav-links" role="list">
+        <li><a href="#services" class="nav-link">Services</a></li>
+        <li><a href="#about" class="nav-link">About</a></li>
+        <li><a href="#gallery" class="nav-link">Gallery</a></li>
+        <li><a href="#testimonials" class="nav-link">Testimonials</a></li>
+        <li><a href="#contact" class="nav-link nav-link--cta">Book Now</a></li>
+      </ul>
+    </nav>
+  </header>
+
+
+  <!-- ===== HERO ===== -->
+  <section class="hero" id="hero" aria-labelledby="hero-heading">
+    <div class="hero-bg" aria-hidden="true"></div>
+
+    <div class="hero-celtic" aria-hidden="true">
+      <svg viewBox="0 0 260 260" xmlns="http://www.w3.org/2000/svg">
+        <g fill="none" stroke="#C9A84C" stroke-width="2" opacity="0.4">
+          <path d="M130 33 A110 110 0 0 1 130 227 A110 110 0 0 1 130 33"/>
+          <path d="M130 33 A110 110 0 0 1 130 227 A110 110 0 0 1 130 33" transform="rotate(120,130,130)"/>
+          <path d="M130 33 A110 110 0 0 1 130 227 A110 110 0 0 1 130 33" transform="rotate(240,130,130)"/>
+          <circle cx="130" cy="130" r="110" stroke-width="1.5"/>
+        </g>
+        <circle cx="130" cy="130" r="120" fill="none" stroke="#C9A84C" stroke-width="1" stroke-dasharray="3 6" opacity="0.2"/>
+        <circle cx="130" cy="130" r="128" fill="none" stroke="#C9A84C" stroke-width="0.75" stroke-dasharray="1 8" opacity="0.12"/>
+      </svg>
+    </div>
+
+    <div class="hero-content">
+      <h1 class="hero-heading" id="hero-heading">Irish Cousin Events</h1>
+      <p class="hero-script">No party too big or too small.</p>
+      <p class="hero-subtext">Your trusted partner for providing professional servers, bartenders, setup &amp; cleanup for your special occasions.</p>
+      <div class="hero-actions">
+        <a href="#contact" class="btn btn-gold">Book Now</a>
+        <a href="#services" class="btn btn-ghost">Our Services</a>
+      </div>
+    </div>
+
+    <div class="hero-scroll" aria-hidden="true">
+      <div class="hero-scroll-line"></div>
+    </div>
+  </section>
+
+
+  <!-- ===== SERVICES ===== -->
+  <section class="services" id="services" aria-labelledby="services-heading">
+    <div class="container">
+      <header class="section-header">
+        <span class="eyebrow">What We Offer</span>
+        <h2 class="section-title" id="services-heading">Professional Event Services</h2>
+        <p class="section-sub">From intimate gatherings to large celebrations — we bring the expertise so you can enjoy every moment.</p>
+      </header>
+
+      <div class="services-grid">
+
+        <article class="service-card reveal" aria-label="Servers and Bartenders service">
+          <div class="service-icon" aria-hidden="true">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M8 22h8M12 22v-8M5 3l7 10 7-10H5z"/>
+            </svg>
+          </div>
+          <h3 class="service-title">Servers &amp; Bartenders</h3>
+          <p class="service-text">Professional, personable staff to serve your guests with care and efficiency. Experienced hospitality professionals for any event style, from formal dinners to casual celebrations.</p>
+        </article>
+
+        <article class="service-card reveal" aria-label="Setup and Cleanup service">
+          <div class="service-icon" aria-hidden="true">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M12 2v4M12 18v4M4.93 4.93l2.83 2.83M16.24 16.24l2.83 2.83M2 12h4M18 12h4M4.93 19.07l2.83-2.83M16.24 7.76l2.83-2.83"/>
+            </svg>
+          </div>
+          <h3 class="service-title">Setup &amp; Cleanup</h3>
+          <p class="service-text">Arrive to a perfectly arranged space and leave without lifting a finger. We handle every detail of setup and breakdown so you stay completely focused on your guests.</p>
+        </article>
+
+        <article class="service-card reveal" aria-label="Grazing and Rentals service">
+          <div class="service-icon" aria-hidden="true">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M18 8h1a4 4 0 0 1 0 8h-1M2 8h16v9a4 4 0 0 1-4 4H6a4 4 0 0 1-4-4V8zM6 1v3M10 1v3M14 1v3"/>
+            </svg>
+          </div>
+          <h3 class="service-title">Grazing &amp; Rentals</h3>
+          <p class="service-text">Stunning grazing tables, charcuterie spreads, and dessert displays crafted for your event. We also offer a professional-grade coffee urn with accompanying creamer and milk carafes, plus a donut wall available for rent.</p>
+        </article>
+
+        <article class="service-card reveal" aria-label="Event Staffing service">
+          <div class="service-icon" aria-hidden="true">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/>
+              <circle cx="9" cy="7" r="4"/>
+              <path d="M23 21v-2a4 4 0 0 0-3-3.87M16 3.13a4 4 0 0 1 0 7.75"/>
+            </svg>
+          </div>
+          <h3 class="service-title">Event Staffing</h3>
+          <p class="service-text">Any size, any location. We staff events across the Hudson Valley and beyond — providing reliable, professional teams tailored to your specific vision and needs.</p>
+        </article>
+
+      </div>
+    </div>
+  </section>
+
+
+  <!-- ===== ABOUT ===== -->
+  <section class="about" id="about" aria-labelledby="about-heading">
+    <div class="about-celtic-bg" aria-hidden="true">
+      <svg viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg">
+        <g fill="none" stroke="#C9A84C" stroke-width="1.5" opacity="0.5">
+          <path d="M100 25 A85 85 0 0 1 100 175 A85 85 0 0 1 100 25"/>
+          <path d="M100 25 A85 85 0 0 1 100 175 A85 85 0 0 1 100 25" transform="rotate(120,100,100)"/>
+          <path d="M100 25 A85 85 0 0 1 100 175 A85 85 0 0 1 100 25" transform="rotate(240,100,100)"/>
+          <circle cx="100" cy="100" r="85" stroke-width="1"/>
+        </g>
+      </svg>
+    </div>
+
+    <div class="container">
+      <div class="about-inner reveal">
+        <span class="eyebrow">Our Story</span>
+        <h2 class="section-title" id="about-heading">Meet Caroline &amp; Maggie</h2>
+        <p class="about-text">What started as a passion for bringing people together has grown into something truly special. We're Caroline and Maggie — cousins, collaborators, and your personal event dream team in the Hudson Valley.</p>
+        <p class="about-text">For over two years, we've been helping families and friends host unforgettable events without the stress. We treat every gathering like it's our own — because that's what family does.</p>
+        <p class="about-text">From intimate backyard dinners to large milestone celebrations, we bring warmth, professionalism, and genuine care to every event we touch. Our roots are in this community, and we're proud to be a part of what makes it special.</p>
+      </div>
+    </div>
+  </section>
+
+
+  <!-- ===== GALLERY ===== -->
+  <section class="gallery" id="gallery" aria-labelledby="gallery-heading">
+    <div class="container">
+      <header class="section-header">
+        <span class="eyebrow">Past Events</span>
+        <h2 class="section-title" id="gallery-heading">A Glimpse of Our Work</h2>
+        <p class="section-sub">From elegant dinner parties to festive holiday gatherings — every event gets our full attention and care.</p>
+      </header>
+
+      <div class="gallery-grid">
+
+        <figure class="gallery-item reveal"
+          tabindex="0"
+          role="img"
+          aria-label="Beautiful charcuterie board with meats, cheeses, fruits, and crackers">
+          <img src="images/charcuterie-board.JPEG" alt="Charcuterie board with artisan meats, cheeses, grapes, and figs" loading="lazy">
+          <figcaption class="gallery-caption">Charcuterie & Platters</figcaption>
+        </figure>
+
+        <figure class="gallery-item reveal"
+          tabindex="0"
+          role="img"
+          aria-label="Elegant bar setup with crystal glassware and premium spirits">
+          <img src="images/bar-setup.JPEG" alt="Full bar setup with crystal glasses, bottles, and ice" loading="lazy">
+          <figcaption class="gallery-caption">Bar Setups</figcaption>
+        </figure>
+
+        <figure class="gallery-item reveal"
+          tabindex="0"
+          role="img"
+          aria-label="Holiday dessert and pastry spread with candles and greenery">
+          <img src="images/holiday-spread.JPEG" alt="Holiday dessert spread with pastries, candles, and festive greenery" loading="lazy">
+          <figcaption class="gallery-caption">Holiday Spreads</figcaption>
+        </figure>
+
+        <figure class="gallery-item reveal"
+          tabindex="0"
+          role="img"
+          aria-label="Outdoor catering buffet with chicken cutlets, salads, and sides">
+          <img src="images/outdoor-catering.JPEG" alt="Outdoor buffet with chicken cutlets, burrata, and fresh salads" loading="lazy">
+          <figcaption class="gallery-caption">Outdoor Catering</figcaption>
+        </figure>
+
+        <figure class="gallery-item reveal"
+          tabindex="0"
+          role="img"
+          aria-label="Fall-themed event spread with seasonal decorations">
+          <img src="images/fall-event.JPEG" alt="Fall event spread with pumpkins, flowers, and seasonal platters" loading="lazy">
+          <figcaption class="gallery-caption">Seasonal Events</figcaption>
+        </figure>
+
+        <figure class="gallery-item reveal"
+          tabindex="0"
+          role="img"
+          aria-label="Wedding cake on outdoor table with floral arch">
+          <img src="images/wedding-cake.JPEG" alt="Elegant three-tier wedding cake on outdoor table with floral arch" loading="lazy">
+          <figcaption class="gallery-caption">Weddings & Celebrations</figcaption>
+        </figure>
+
+      </div>
+
+    </div>
+  </section>
+
+
+  <!-- ===== TESTIMONIALS ===== -->
+  <section class="testimonials" id="testimonials" aria-labelledby="testimonials-heading">
+    <div class="container">
+      <header class="section-header">
+        <span class="eyebrow">Kind Words</span>
+        <h2 class="section-title" id="testimonials-heading">What Our Clients Say</h2>
+      </header>
+
+      <div class="testimonials-grid">
+
+        <blockquote class="testimonial reveal">
+          <div class="testimonial-gold-bar" aria-hidden="true"></div>
+          <div class="testimonial-body">
+            <div class="testimonial-quote" aria-hidden="true">&ldquo;</div>
+            <p class="testimonial-text">The best team! Make every event smooth, perfect, and easy going. You think of everything and take care of everything and this allows for the host to really enjoy the special day. Thank you ladies.</p>
+            <footer class="testimonial-footer">
+              <div class="testimonial-stars" aria-label="5 out of 5 stars" role="img">
+                <svg viewBox="0 0 16 16" fill="#C9A84C" aria-hidden="true" focusable="false"><path d="M8 1l1.91 3.88 4.28.62-3.1 3.02.73 4.27L8 10.77l-3.82 2.02.73-4.27L1.81 5.5l4.28-.62L8 1z"/></svg>
+                <svg viewBox="0 0 16 16" fill="#C9A84C" aria-hidden="true" focusable="false"><path d="M8 1l1.91 3.88 4.28.62-3.1 3.02.73 4.27L8 10.77l-3.82 2.02.73-4.27L1.81 5.5l4.28-.62L8 1z"/></svg>
+                <svg viewBox="0 0 16 16" fill="#C9A84C" aria-hidden="true" focusable="false"><path d="M8 1l1.91 3.88 4.28.62-3.1 3.02.73 4.27L8 10.77l-3.82 2.02.73-4.27L1.81 5.5l4.28-.62L8 1z"/></svg>
+                <svg viewBox="0 0 16 16" fill="#C9A84C" aria-hidden="true" focusable="false"><path d="M8 1l1.91 3.88 4.28.62-3.1 3.02.73 4.27L8 10.77l-3.82 2.02.73-4.27L1.81 5.5l4.28-.62L8 1z"/></svg>
+                <svg viewBox="0 0 16 16" fill="#C9A84C" aria-hidden="true" focusable="false"><path d="M8 1l1.91 3.88 4.28.62-3.1 3.02.73 4.27L8 10.77l-3.82 2.02.73-4.27L1.81 5.5l4.28-.62L8 1z"/></svg>
+              </div>
+              <cite class="testimonial-cite">Diana M.</cite>
+            </footer>
+          </div>
+        </blockquote>
+
+        <blockquote class="testimonial reveal">
+          <div class="testimonial-gold-bar" aria-hidden="true"></div>
+          <div class="testimonial-body">
+            <div class="testimonial-quote" aria-hidden="true">&ldquo;</div>
+            <p class="testimonial-text">Simply the best! Never have to worry about anything. Will never use anyone else.</p>
+            <footer class="testimonial-footer">
+              <div class="testimonial-stars" aria-label="5 out of 5 stars" role="img">
+                <svg viewBox="0 0 16 16" fill="#C9A84C" aria-hidden="true" focusable="false"><path d="M8 1l1.91 3.88 4.28.62-3.1 3.02.73 4.27L8 10.77l-3.82 2.02.73-4.27L1.81 5.5l4.28-.62L8 1z"/></svg>
+                <svg viewBox="0 0 16 16" fill="#C9A84C" aria-hidden="true" focusable="false"><path d="M8 1l1.91 3.88 4.28.62-3.1 3.02.73 4.27L8 10.77l-3.82 2.02.73-4.27L1.81 5.5l4.28-.62L8 1z"/></svg>
+                <svg viewBox="0 0 16 16" fill="#C9A84C" aria-hidden="true" focusable="false"><path d="M8 1l1.91 3.88 4.28.62-3.1 3.02.73 4.27L8 10.77l-3.82 2.02.73-4.27L1.81 5.5l4.28-.62L8 1z"/></svg>
+                <svg viewBox="0 0 16 16" fill="#C9A84C" aria-hidden="true" focusable="false"><path d="M8 1l1.91 3.88 4.28.62-3.1 3.02.73 4.27L8 10.77l-3.82 2.02.73-4.27L1.81 5.5l4.28-.62L8 1z"/></svg>
+                <svg viewBox="0 0 16 16" fill="#C9A84C" aria-hidden="true" focusable="false"><path d="M8 1l1.91 3.88 4.28.62-3.1 3.02.73 4.27L8 10.77l-3.82 2.02.73-4.27L1.81 5.5l4.28-.62L8 1z"/></svg>
+              </div>
+              <cite class="testimonial-cite">Michelle M.</cite>
+            </footer>
+          </div>
+        </blockquote>
+
+        <blockquote class="testimonial reveal">
+          <div class="testimonial-gold-bar" aria-hidden="true"></div>
+          <div class="testimonial-body">
+            <div class="testimonial-quote" aria-hidden="true">&ldquo;</div>
+            <p class="testimonial-text">You guys did an amazing job! Food was fantastic, everyone was treated well, and we had a great time.</p>
+            <footer class="testimonial-footer">
+              <div class="testimonial-stars" aria-label="5 out of 5 stars" role="img">
+                <svg viewBox="0 0 16 16" fill="#C9A84C" aria-hidden="true" focusable="false"><path d="M8 1l1.91 3.88 4.28.62-3.1 3.02.73 4.27L8 10.77l-3.82 2.02.73-4.27L1.81 5.5l4.28-.62L8 1z"/></svg>
+                <svg viewBox="0 0 16 16" fill="#C9A84C" aria-hidden="true" focusable="false"><path d="M8 1l1.91 3.88 4.28.62-3.1 3.02.73 4.27L8 10.77l-3.82 2.02.73-4.27L1.81 5.5l4.28-.62L8 1z"/></svg>
+                <svg viewBox="0 0 16 16" fill="#C9A84C" aria-hidden="true" focusable="false"><path d="M8 1l1.91 3.88 4.28.62-3.1 3.02.73 4.27L8 10.77l-3.82 2.02.73-4.27L1.81 5.5l4.28-.62L8 1z"/></svg>
+                <svg viewBox="0 0 16 16" fill="#C9A84C" aria-hidden="true" focusable="false"><path d="M8 1l1.91 3.88 4.28.62-3.1 3.02.73 4.27L8 10.77l-3.82 2.02.73-4.27L1.81 5.5l4.28-.62L8 1z"/></svg>
+                <svg viewBox="0 0 16 16" fill="#C9A84C" aria-hidden="true" focusable="false"><path d="M8 1l1.91 3.88 4.28.62-3.1 3.02.73 4.27L8 10.77l-3.82 2.02.73-4.27L1.81 5.5l4.28-.62L8 1z"/></svg>
+              </div>
+              <cite class="testimonial-cite">Aidan H.</cite>
+            </footer>
+          </div>
+        </blockquote>
+
+      </div>
+
+      <div class="testimonials-cta">
+        <a href="reviews.html" class="btn btn-ghost">See All Reviews</a>
+      </div>
+
+      <!-- Review submission form -->
+      <div class="review-form-wrapper reveal">
+        <h3 class="review-form-title">Share Your Experience</h3>
+        <form id="review-form" class="review-form" novalidate>
+          <div class="review-row">
+            <div class="review-field">
+              <label for="review-name" class="review-label">Your Name</label>
+              <input type="text" id="review-name" class="review-input" required placeholder="Jane D.">
+            </div>
+            <div class="review-field">
+              <label class="review-label">Rating</label>
+              <div class="star-rating" id="star-rating" role="radiogroup" aria-label="Rating">
+                <button type="button" class="star-btn" data-value="1" aria-label="1 star"><svg viewBox="0 0 16 16" aria-hidden="true"><path d="M8 1l1.91 3.88 4.28.62-3.1 3.02.73 4.27L8 10.77l-3.82 2.02.73-4.27L1.81 5.5l4.28-.62L8 1z"/></svg></button>
+                <button type="button" class="star-btn" data-value="2" aria-label="2 stars"><svg viewBox="0 0 16 16" aria-hidden="true"><path d="M8 1l1.91 3.88 4.28.62-3.1 3.02.73 4.27L8 10.77l-3.82 2.02.73-4.27L1.81 5.5l4.28-.62L8 1z"/></svg></button>
+                <button type="button" class="star-btn" data-value="3" aria-label="3 stars"><svg viewBox="0 0 16 16" aria-hidden="true"><path d="M8 1l1.91 3.88 4.28.62-3.1 3.02.73 4.27L8 10.77l-3.82 2.02.73-4.27L1.81 5.5l4.28-.62L8 1z"/></svg></button>
+                <button type="button" class="star-btn" data-value="4" aria-label="4 stars"><svg viewBox="0 0 16 16" aria-hidden="true"><path d="M8 1l1.91 3.88 4.28.62-3.1 3.02.73 4.27L8 10.77l-3.82 2.02.73-4.27L1.81 5.5l4.28-.62L8 1z"/></svg></button>
+                <button type="button" class="star-btn" data-value="5" aria-label="5 stars"><svg viewBox="0 0 16 16" aria-hidden="true"><path d="M8 1l1.91 3.88 4.28.62-3.1 3.02.73 4.27L8 10.77l-3.82 2.02.73-4.27L1.81 5.5l4.28-.62L8 1z"/></svg></button>
+              </div>
+            </div>
+          </div>
+          <div class="review-field">
+            <label for="review-text" class="review-label">Your Review</label>
+            <textarea id="review-text" class="review-input review-textarea" required rows="3" placeholder="Tell us about your experience..."></textarea>
+          </div>
+          <button type="submit" class="btn btn-gold review-submit" id="review-submit-btn">
+            <span class="review-submit-label">Submit Review</span>
+          </button>
+          <p class="review-success" id="review-success" hidden>Thank you for your review!</p>
+          <p class="review-error" id="review-error" hidden>Please fill in all fields and select a rating.</p>
+        </form>
+      </div>
+
+    </div>
+  </section>
+
+
+  <!-- ===== CONTACT / BOOK ===== -->
+  <section class="contact" id="contact" aria-labelledby="contact-heading">
+    <div class="container contact-layout">
+
+      <div class="contact-info reveal">
+        <span class="eyebrow">Get In Touch</span>
+        <h2 class="section-title" id="contact-heading">Let's Plan Your Event</h2>
+        <p class="contact-intro">Ready to make your next gathering unforgettable? We'd love to hear about your event — no party too big or too small.</p>
+
+        <ul class="contact-details" role="list">
+          <li>
+            <a href="tel:+18456644006" class="contact-item" aria-label="Call us at (845) 664-4006">
+              <span class="contact-item-icon" aria-hidden="true">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" width="20" height="20">
+                  <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 12 19.79 19.79 0 0 1 1.61 3.44 2 2 0 0 1 3.59 1.28h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L7.91 8.96a16 16 0 0 0 6 6l.72-.9a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 21.28 16.92z"/>
+                </svg>
+              </span>
+              <span class="contact-item-body">
+                <span class="contact-item-label">Phone</span>
+                <span class="contact-item-value">(845) 664-4006</span>
+              </span>
+            </a>
+          </li>
+          <li>
+            <a href="mailto:irishcousinevents@gmail.com" class="contact-item" aria-label="Email us at irishcousinevents@gmail.com">
+              <span class="contact-item-icon" aria-hidden="true">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" width="20" height="20">
+                  <rect x="2" y="4" width="20" height="16" rx="2"/>
+                  <path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/>
+                </svg>
+              </span>
+              <span class="contact-item-body">
+                <span class="contact-item-label">Email</span>
+                <span class="contact-item-value">irishcousinevents@gmail.com</span>
+              </span>
+            </a>
+          </li>
+          <li>
+            <div class="contact-item">
+              <span class="contact-item-icon" aria-hidden="true">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" width="20" height="20">
+                  <path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z"/>
+                  <circle cx="12" cy="10" r="3"/>
+                </svg>
+              </span>
+              <span class="contact-item-body">
+                <span class="contact-item-label">Service Area</span>
+                <span class="contact-item-value">Hudson Valley, NY &amp; Beyond</span>
+              </span>
+            </div>
+          </li>
+        </ul>
+
+        <a href="https://www.facebook.com/p/Irish-Cousin-Events-61559779203297/" target="_blank" rel="noopener noreferrer" class="btn-facebook" aria-label="Follow us on Facebook">
+          <svg viewBox="0 0 24 24" width="20" height="20" fill="currentColor" aria-hidden="true" focusable="false">
+            <path d="M24 12.073c0-6.627-5.373-12-12-12S0 5.446 0 12.073c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.875v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/>
+          </svg>
+          <span>Follow Us on Facebook</span>
+        </a>
+      </div>
+
+      <form class="contact-form reveal" id="contact-form" action="https://formspree.io/f/xlgwapep" method="POST" novalidate aria-label="Event inquiry form">
+        <h3 class="contact-form-title">Send a Message</h3>
+
+        <div class="form-row">
+          <div class="form-group">
+            <label for="fname" class="form-label">First Name <span class="form-required" aria-hidden="true">*</span></label>
+            <input type="text" id="fname" name="fname" class="form-input" required autocomplete="given-name" placeholder="Your first name">
+          </div>
+          <div class="form-group">
+            <label for="lname" class="form-label">Last Name <span class="form-required" aria-hidden="true">*</span></label>
+            <input type="text" id="lname" name="lname" class="form-input" required autocomplete="family-name" placeholder="Your last name">
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label for="email" class="form-label">Email <span class="form-required" aria-hidden="true">*</span></label>
+          <input type="email" id="email" name="email" class="form-input" required autocomplete="email" placeholder="you@example.com">
+        </div>
+
+        <div class="form-group">
+          <label for="phone" class="form-label">Phone</label>
+          <input type="tel" id="phone" name="phone" class="form-input" autocomplete="tel" placeholder="(845) 000-0000">
+        </div>
+
+        <div class="form-group">
+          <label for="event-date" class="form-label">Event Date</label>
+          <input type="date" id="event-date" name="event-date" class="form-input">
+        </div>
+
+        <div class="form-group">
+          <label for="message" class="form-label">Tell us about your event <span class="form-required" aria-hidden="true">*</span></label>
+          <textarea id="message" name="message" class="form-input form-textarea" required rows="4" placeholder="Type of event, expected guest count, location, any special requests..."></textarea>
+        </div>
+
+        <button type="submit" class="btn btn-gold btn-full" id="submit-btn">
+          <span class="submit-label">Send Message</span>
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" width="18" height="18" aria-hidden="true" focusable="false">
+            <path d="M5 12h14M12 5l7 7-7 7"/>
+          </svg>
+        </button>
+
+        <div class="form-feedback form-feedback--success" id="form-success" role="alert" aria-live="polite" hidden>
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" width="20" height="20" aria-hidden="true">
+            <polyline points="20 6 9 17 4 12"/>
+          </svg>
+          <p>Message sent! Caroline &amp; Maggie will be in touch soon.</p>
+        </div>
+
+        <div class="form-feedback form-feedback--error" id="form-error" role="alert" aria-live="polite" hidden>
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" width="20" height="20" aria-hidden="true">
+            <circle cx="12" cy="12" r="10"/>
+            <line x1="12" y1="8" x2="12" y2="12"/>
+            <line x1="12" y1="16" x2="12.01" y2="16"/>
+          </svg>
+          <p>Please fill in all required fields.</p>
+        </div>
+      </form>
+
+    </div>
+  </section>
+
+
+  <!-- ===== FOOTER ===== -->
+  <footer class="footer" role="contentinfo">
+    <div class="container footer-inner">
+      <div class="footer-brand">
+        <svg class="footer-knot" viewBox="0 0 80 80" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false">
+          <g fill="none" stroke="#C9A84C" stroke-width="3">
+            <path d="M40 10 A34 34 0 0 1 40 70 A34 34 0 0 1 40 10"/>
+            <path d="M40 10 A34 34 0 0 1 40 70 A34 34 0 0 1 40 10" transform="rotate(120,40,40)"/>
+            <path d="M40 10 A34 34 0 0 1 40 70 A34 34 0 0 1 40 10" transform="rotate(240,40,40)"/>
+            <circle cx="40" cy="40" r="34" stroke-width="2"/>
+          </g>
+        </svg>
+        <p class="footer-tagline">No party too big or too small.</p>
+      </div>
+
+      <nav class="footer-nav" aria-label="Footer navigation">
+        <a href="#services" class="footer-link">Services</a>
+        <a href="#about" class="footer-link">About</a>
+        <a href="#gallery" class="footer-link">Gallery</a>
+        <a href="reviews.html" class="footer-link">Reviews</a>
+        <a href="#contact" class="footer-link">Contact</a>
+      </nav>
+
+      <div class="footer-contact">
+        <a href="tel:+18456644006" class="footer-contact-link">(845) 664-4006</a>
+        <a href="mailto:irishcousinevents@gmail.com" class="footer-contact-link">irishcousinevents@gmail.com</a>
+        <a href="https://www.facebook.com/p/Irish-Cousin-Events-61559779203297/" target="_blank" rel="noopener noreferrer" class="footer-facebook" aria-label="Irish Cousin Events on Facebook">
+          <svg viewBox="0 0 24 24" width="18" height="18" fill="currentColor" aria-hidden="true" focusable="false">
+            <path d="M24 12.073c0-6.627-5.373-12-12-12S0 5.446 0 12.073c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.875v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/>
+          </svg>
+          <span>Facebook</span>
+        </a>
+      </div>
+    </div>
+
+    <div class="footer-bottom">
+      <div class="container">
+        <p>&copy; 2024 Irish Cousin Events &nbsp;&middot;&nbsp; Hudson Valley, NY</p>
+      </div>
+    </div>
+  </footer>
+
+  <script src="js/main.js"></script>
+</body>
+</html>
